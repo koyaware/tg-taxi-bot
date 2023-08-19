@@ -41,6 +41,11 @@ async def mailing_menu(message: Message):
                                    reply_markup=mailing_inline)
 
 
+async def count_users(message: Message):
+    count = db.count_users()
+    await message.bot.send_message(message.from_user.id, f'<b>Количество пользователей:</b> <code>{count}</code>')
+
+
 def register_admin(dp: Dispatcher):
     dp.register_message_handler(
         admin_start,
@@ -59,5 +64,10 @@ def register_admin(dp: Dispatcher):
     dp.register_message_handler(
         mailing_menu, AdminFilter(),
         text=Commands.mailing.value,
+        state='*'
+    )
+    dp.register_message_handler(
+        count_users, AdminFilter(),
+        text=['/users', Commands.count_users.value],
         state='*'
     )

@@ -10,6 +10,7 @@ btnReviews = KeyboardButton(Commands.reviews.value, web_app=WebAppInfo(url='http
 btnFeedback = KeyboardButton(Commands.feedback.value)
 btnAdmin = KeyboardButton(Commands.admin_menu.value)
 btnBanUsers = KeyboardButton(Commands.ban_users.value)
+btnCountUsers = KeyboardButton(Commands.count_users.value)
 btnSpeaker = KeyboardButton(Commands.mailing.value)
 btnComeBack = KeyboardButton(Commands.come_back.value)
 
@@ -30,6 +31,7 @@ mainMenuAdmin.add(btnAdmin)
 
 adminMenu = ReplyKeyboardMarkup(resize_keyboard=True)
 adminMenu.add(btnBanUsers, btnSpeaker)
+adminMenu.add(btnCountUsers)
 adminMenu.add(btnComeBack)
 
 become_driver_inline = InlineKeyboardMarkup(row_width=1)

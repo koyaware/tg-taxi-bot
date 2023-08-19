@@ -66,3 +66,9 @@ class Database:
         with self.connection:
             result = self.cursor.execute("SELECT username FROM users").fetchall()
             return [row[0] for row in result]
+
+    def count_users(self):
+        with self.connection:
+            self.cursor.execute("SELECT COUNT(*) FROM users")
+            count = self.cursor.fetchone()[0]
+            return count
